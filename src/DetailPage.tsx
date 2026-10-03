@@ -1,6 +1,6 @@
 const DetailPage = () => {
   return (
-    <div>DetailPage</div>
+    <div>Detail Page</div>
   )
 }
 

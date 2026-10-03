@@ -1,6 +1,6 @@
 const ListPage = () => {
   return (
-    <div>ListPage</div>
+    <div>List Page</div>
   )
 }
 

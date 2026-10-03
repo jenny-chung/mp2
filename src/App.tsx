@@ -2,8 +2,14 @@ import ListPage from './ListPage'
 import GalleryPage from './GalleryPage'
 import DetailPage from './DetailPage'
 import { Link, Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { fetchArtworks } from './artworks'
 
 function App() {
+
+  useEffect(() => {
+    fetchArtworks().then((artworks) => console.log(artworks))
+  }, [])
 
   return (
     <>
@@ -14,14 +20,14 @@ function App() {
         <Link to="/">List</Link>
         <Link to="/gallery">Gallery</Link>
       </nav>
-    
+
       {/* Routes */}
       <Routes>
         <Route path="/" element={<ListPage />} />
         <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/artwork/:id" element={<DetailPage />} /> 
+        <Route path="/artwork/:id" element={<DetailPage />} />
       </Routes>
-    
+
     </>
   )
 }
