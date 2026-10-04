@@ -33,12 +33,19 @@
 }
 
 .navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
   padding-bottom: 0.25rem;
   border-bottom: 2px solid transparent;
+}
+
+.navIcon {
+  flex-shrink: 0;
 }
 
 .navLink:hover {
