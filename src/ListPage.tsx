@@ -1,6 +1,12 @@
-const ListPage = () => {
+import type { Artwork } from './types'
+
+type Props = {
+  artworks: Artwork[]
+}
+
+const ListPage = ({ artworks }: Props) => {
   return (
-    <div>List Page</div>
+    <div>List Page ({artworks.length} artworks)</div>
   )
 }
 

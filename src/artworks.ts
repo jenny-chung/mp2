@@ -1,9 +1,11 @@
 import { client } from './client'
 import type { RawArtwork, Artwork } from './types'
+import fallbackData from './fallback.json'
 
 const SEARCH_ENDPOINT = '/artworks/search'
 const FIELDS =
   'id,title,image_id,artist_title,date_start,date_display,artwork_type_title,place_of_origin,medium_display,dimensions,description'
+const CACHE_KEY = 'aic-artworks'
 
 function stripHtml(html: string | null): string {
   if (!html) return ''
@@ -29,15 +31,32 @@ function normalize(raw: RawArtwork[]): Artwork[] {
 }
 
 export async function fetchArtworks(): Promise<Artwork[]> {
-  const response = await client.get(SEARCH_ENDPOINT, {
-    params: {
-      q: 'monet',
-      limit: 100,
-      fields: FIELDS,
-     }
-  });
+  const cached = localStorage.getItem(CACHE_KEY)
+  if (cached) {
+    try {
+      return JSON.parse(cached) as Artwork[]
+    } catch {
+      localStorage.removeItem(CACHE_KEY)
+    }
+  }
 
-  return normalize(response.data.data as RawArtwork[])
-  
+  let raw: RawArtwork[]
+  try {
+    const response = await client.get(SEARCH_ENDPOINT, {
+      params: {
+        q: 'monet',
+        limit: 100,
+        fields: FIELDS,
+       }
+    });
+    raw = response.data.data as RawArtwork[]
+  } catch {
+    raw = fallbackData as RawArtwork[]
+  }
+
+  const result = normalize(raw)
+  localStorage.setItem(CACHE_KEY, JSON.stringify(result))
+
+  return result
 }
 
