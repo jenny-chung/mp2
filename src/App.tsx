@@ -1,10 +1,11 @@
 import ListPage from './ListPage'
 import GalleryPage from './GalleryPage'
 import DetailPage from './DetailPage'
-import { Link, Routes, Route } from 'react-router-dom'
+import { NavLink, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { fetchArtworks } from './artworks'
 import type { Artwork } from './types'
+import styles from './App.module.css'
 
 function App() {
 
@@ -29,13 +30,26 @@ function App() {
 
   return (
     <>
-      <h1>the view</h1>
+      <header className={styles.header}>
+        <h1 className={styles.title}>the view</h1>
 
-      {/* Navigation */}
-      <nav>
-        <Link to="/">List</Link>
-        <Link to="/gallery">Gallery</Link>
-      </nav>
+        {/* Navigation */}
+        <nav className={styles.nav}>
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
+          >
+            List
+          </NavLink>
+          <NavLink
+            to="/gallery"
+            className={({ isActive }) => isActive ? `${styles.navLink} ${styles.navLinkActive}` : styles.navLink}
+          >
+            Gallery
+          </NavLink>
+        </nav>
+      </header>
 
       {/* Routes */}
       <Routes>

@@ -5,7 +5,7 @@ import fallbackData from './fallback.json'
 const SEARCH_ENDPOINT = '/artworks/search'
 const FIELDS =
   'id,title,image_id,artist_title,date_start,date_display,artwork_type_title,place_of_origin,medium_display,dimensions,description'
-const CACHE_KEY = 'aic-artworks'
+const CACHE_KEY = 'aic-artworks-impressionism'
 
 function stripHtml(html: string | null): string {
   if (!html) return ''
@@ -44,7 +44,7 @@ export async function fetchArtworks(): Promise<Artwork[]> {
   try {
     const response = await client.get(SEARCH_ENDPOINT, {
       params: {
-        q: 'monet',
+        q: 'impressionism',
         limit: 100,
         fields: FIELDS,
        }
