@@ -1,6 +1,6 @@
 import type { Artwork } from "./types";
-import { Link } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { useMemo } from "react";
 import styles from "./GalleryPage.module.css";
 import { getImageUrl } from "./image";
 
@@ -9,7 +9,8 @@ type Props = {
 };
 
 const GalleryPage = ({ artworks }: Props) => {
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedTypes = searchParams.getAll('type');
 
   const types = useMemo(
     () => [...new Set(artworks.map((artwork) => artwork.artworkType))].sort(),
@@ -30,11 +31,24 @@ const GalleryPage = ({ artworks }: Props) => {
   );
 
   function toggleType(type: string) {
-    if (selectedTypes.includes(type)) {
-      setSelectedTypes(selectedTypes.filter((t) => t !== type));
-    } else {
-      setSelectedTypes([...selectedTypes, type]);
-    }
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      const current = next.getAll('type');
+      next.delete('type');
+      const updated = current.includes(type)
+        ? current.filter((t) => t !== type)
+        : [...current, type];
+      for (const t of updated) next.append('type', t);
+      return next;
+    }, { replace: true });
+  }
+
+  function clearTypes() {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      next.delete('type');
+      return next;
+    }, { replace: true });
   }
 
   return (
@@ -53,7 +67,7 @@ const GalleryPage = ({ artworks }: Props) => {
         ))}
 
         {selectedTypes.length > 0 && (
-          <button className={styles.clearButton} onClick={() => setSelectedTypes([])}>
+          <button className={styles.clearButton} onClick={clearTypes}>
             Clear
           </button>
         )}

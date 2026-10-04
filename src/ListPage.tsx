@@ -1,6 +1,6 @@
 import type { Artwork } from "./types";
-import { Link } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { useMemo } from "react";
 import styles from "./ListPage.module.css";
 import { getImageUrl } from "./image";
 
@@ -9,12 +9,26 @@ type Props = {
 };
 
 type SortField = 'title' | 'artist' | 'date'
+type SortOrder = 'asc' | 'desc'
 
 const ListPage = ({ artworks }: Props) => {
 
-  const [search, setSearch] = useState('');
-  const [sortBy, setSortBy] = useState<SortField>('title')
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const search = searchParams.get('q') ?? ''
+  const sortBy = (searchParams.get('sort') as SortField | null) ?? 'title'
+  const sortOrder = (searchParams.get('order') as SortOrder | null) ?? 'asc'
+
+  function updateParams(updates: Record<string, string>) {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      for (const [key, value] of Object.entries(updates)) {
+        if (value) next.set(key, value)
+        else next.delete(key)
+      }
+      return next
+    }, { replace: true })
+  }
 
   const query = search.toLowerCase()
 
@@ -42,19 +56,31 @@ const ListPage = ({ artworks }: Props) => {
   return (
     <div className={styles.page}>
         <div className={styles.controls}>
-            <input
-                className={styles.search}
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search artwork by title or artist"
-            />
+            <div className={styles.searchWrap}>
+                <input
+                    className={styles.search}
+                    value={search}
+                    onChange={(e) => updateParams({ q: e.target.value })}
+                    placeholder="Search artwork by title or artist"
+                />
+                {search && (
+                    <button
+                        type="button"
+                        className={styles.clearSearch}
+                        onClick={() => updateParams({ q: '' })}
+                        aria-label="Clear search"
+                    >
+                        ×
+                    </button>
+                )}
+            </div>
 
             <label className={styles.sortLabel}>
                 Sort by
                 <select
                     className={styles.sortSelect}
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as SortField)}
+                    onChange={(e) => updateParams({ sort: e.target.value })}
                 >
                     <option value="title">Title</option>
                     <option value="artist">Artist</option>
@@ -64,7 +90,7 @@ const ListPage = ({ artworks }: Props) => {
 
             <button
                 className={styles.orderButton}
-                onClick={() => setSortOrder(sortOrder === "asc" ? "desc" : "asc")}
+                onClick={() => updateParams({ order: sortOrder === "asc" ? "desc" : "asc" })}
             >
                 {sortOrder === "asc" ? "Ascending ↑" : "Descending ↓"}
             </button>

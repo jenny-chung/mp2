@@ -12,13 +12,42 @@
   margin-bottom: 1.75rem;
 }
 
-.search {
+.searchWrap {
+  position: relative;
   flex: 1 1 240px;
-  padding: 0.55rem 0.85rem;
+}
+
+.search {
+  width: 100%;
+  padding: 0.55rem 2rem 0.55rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.95rem;
   background: var(--surface);
+}
+
+.clearSearch {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 999px;
+}
+
+.clearSearch:hover {
+  color: var(--text);
+  background: var(--accent-soft);
 }
 
 .search:focus {
