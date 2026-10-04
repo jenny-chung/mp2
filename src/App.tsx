@@ -82,7 +82,7 @@ function App() {
         <Route path="/" element={<Navigate to={lastSection === 'gallery' ? lastGallery : lastList} replace />} />
         <Route path="/list" element={<ListPage artworks={artworks} />} />
         <Route path="/gallery" element={<GalleryPage artworks={artworks} />} />
-        <Route path="/artwork/:id" element={<DetailPage artworks={artworks} />} />
+        <Route path="/artwork/:id" element={<DetailPage artworks={artworks} backTo={lastSection === 'gallery' ? lastGallery : lastList} />} />
       </Routes>
 
     </>

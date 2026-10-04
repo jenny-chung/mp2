@@ -5,9 +5,10 @@ import styles from './DetailPage.module.css'
 
 type Props = {
   artworks: Artwork[]
+  backTo: string
 }
 
-const DetailPage = ({ artworks }: Props) => {
+const DetailPage = ({ artworks, backTo }: Props) => {
     const { id } = useParams() // reads :id from URL
     const location = useLocation() // reads state passed by a link
     const navigate = useNavigate()
@@ -30,12 +31,16 @@ const DetailPage = ({ artworks }: Props) => {
     const prevId = index > 0 ? ids[index - 1] : undefined
     const nextId = index >= 0 && index < ids.length - 1 ? ids[index + 1] : undefined
 
+    const backLabel = backTo.startsWith('/gallery') ? '← Back to gallery' : '← Back to search'
+
     function goTo(targetId: number) {
         navigate(`/artwork/${targetId}`, { state : { ids }, replace: true })
     }
 
   return (
     <div className={styles.page}>
+
+        <Link className={styles.backLink} to={backTo}>{backLabel}</Link>
 
         {/* Prev and Next Navigation */}
         <div className={styles.pager}>
