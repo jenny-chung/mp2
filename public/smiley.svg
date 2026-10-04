@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="180 130 336 292">
+<title>the view smiley</title>
+<path d="M291 344 L289 374 M378 342 L380 372" fill="none" stroke="#111111" stroke-width="17" stroke-linecap="round"/>
+<g fill="#ffffff" stroke="#111111" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 24)">
+<path d="M268 364 C266 352 290 348 308 352 C324 356 326 370 312 376 C296 382 270 378 268 364 Z"/>
+<path d="M352 360 C356 348 382 346 398 352 C412 358 410 372 394 376 C376 380 350 374 352 360 Z"/>
+</g>
+<g fill="none" stroke="#111111" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+<path d="M232 186 C262 150 350 142 420 160 C474 174 500 214 490 262 C478 318 404 344 320 342 C262 341 218 330 206 300 C194 268 204 214 232 186 Z"/>
+<circle cx="296" cy="236" r="3"/>
+<circle cx="400" cy="226" r="3"/>
+<path d="M268 276 C308 306 382 300 424 262"/>
+</g>
+</svg>

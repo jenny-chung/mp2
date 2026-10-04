@@ -31,6 +31,12 @@ const DetailPage = ({ artworks, backTo }: Props) => {
     const prevId = index > 0 ? ids[index - 1] : undefined
     const nextId = index >= 0 && index < ids.length - 1 ? ids[index + 1] : undefined
 
+    // where the mascot sits on the progress line (0 = start, 1 = end)
+    const progress = ids.length > 1 && index >= 0 ? index / (ids.length - 1) : 0
+    const trackStart = 60
+    const trackEnd = 940
+    const markerX = trackStart + progress * (trackEnd - trackStart)
+
     const backLabel = backTo.startsWith('/gallery') ? '← Back to gallery' : '← Back to search'
 
     function goTo(targetId: number) {
@@ -52,9 +58,40 @@ const DetailPage = ({ artworks, backTo }: Props) => {
                 ← Previous
             </button>
 
-            <span className={styles.pagerStatus}>
-                {index + 1} of {ids.length}
-            </span>
+            <div
+                className={styles.progress}
+                role="progressbar"
+                aria-label="Position in this list of artworks"
+                aria-valuemin={1}
+                aria-valuemax={ids.length}
+                aria-valuenow={index + 1}
+            >
+                <svg className={styles.progressSvg} viewBox="0 26 1000 104" aria-hidden="true">
+                    {/* faint pencil line for the whole length */}
+                    <line className={styles.progressTrack} x1={trackStart} y1={110} x2={trackEnd} y2={110} />
+
+                    {/* paint stroke, stretched from the start to the current position */}
+                    <g transform={`translate(${trackStart} 110) scale(${Math.max(markerX - trackStart, 1) / 100} 1.7) translate(0 -110)`}>
+                        <path
+                            className={styles.progressFill}
+                            d="M0 110 C2 103 8 102 15 103 C35 105 60 101 85 103 C92 104 97 102 100 104 L98 107 L100 110 L97 113 L100 116 C92 118 70 116 50 117 C30 118 10 119 3 116 C0 115 -1 112 0 110 Z"
+                        />
+                        <path className={styles.progressBristle} d="M4 107 C30 106 60 105 94 106" vectorEffect="non-scaling-stroke" />
+                        <path className={styles.progressBristle} d="M6 113 C35 114 65 112 92 113" vectorEffect="non-scaling-stroke" />
+                    </g>
+
+                    <image
+                        href={`${import.meta.env.BASE_URL}smiley.svg`}
+                        x={markerX - 53}
+                        y={35}
+                        width={74}
+                        height={64}
+                    />
+                </svg>
+                <span className={styles.pagerStatus}>
+                    {index + 1} of {ids.length}
+                </span>
+            </div>
 
             <button
                 className={styles.pagerButton}

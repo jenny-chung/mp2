@@ -44,6 +44,42 @@
   cursor: not-allowed;
 }
 
+.progress {
+  flex: 1;
+  min-width: 0;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+}
+
+.progressSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.progressTrack {
+  stroke: var(--border);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 2 10;
+}
+
+.progressFill {
+  fill: var(--accent);
+}
+
+.progressBristle {
+  fill: none;
+  stroke: var(--accent-soft);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
 .pagerStatus {
   color: var(--text-muted);
   font-size: 0.85rem;
