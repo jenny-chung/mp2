@@ -1,7 +1,7 @@
 import ListPage from './ListPage'
 import GalleryPage from './GalleryPage'
 import DetailPage from './DetailPage'
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Link, Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { fetchArtworks } from './artworks'
 import type { Artwork } from './types'
@@ -31,7 +31,14 @@ function App() {
   return (
     <>
       <header className={styles.header}>
-        <h1 className={styles.title}>the view</h1>
+        <Link to="/" className={styles.brand}>
+          <img
+            className={styles.logo}
+            src={`${import.meta.env.BASE_URL}logo.svg`}
+            alt=""
+          />
+          <h1 className={styles.title}>the view</h1>
+        </Link>
 
         {/* Navigation */}
         <nav className={styles.nav}>

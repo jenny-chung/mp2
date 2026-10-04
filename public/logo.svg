@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="50 62 564 360">
+<title>the view mascot</title>
+<path d="M291 344 L289 374 M378 342 L380 372" fill="none" stroke="#111111" stroke-width="17" stroke-linecap="round"/>
+<g fill="#ffffff" stroke="#111111" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 24)">
+<path d="M268 364 C266 352 290 348 308 352 C324 356 326 370 312 376 C296 382 270 378 268 364 Z"/>
+<path d="M352 360 C356 348 382 346 398 352 C412 358 410 372 394 376 C376 380 350 374 352 360 Z"/>
+</g>
+<g fill="none" stroke="#111111" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+<path d="M232 186 C262 150 350 142 420 160 C474 174 500 214 490 262 C478 318 404 344 320 342 C262 341 218 330 206 300 C194 268 204 214 232 186 Z"/>
+<circle cx="296" cy="236" r="3"/>
+<circle cx="400" cy="226" r="3"/>
+<path d="M268 276 C308 306 382 300 424 262"/>
+</g>
+<g stroke="#111111" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+<path d="M248 172 C236 140 290 104 370 98 C450 92 528 116 530 150 C532 172 512 186 492 184 C440 166 330 160 248 172 Z" fill="#ffffff"/>
+<path d="M264 164 C340 152 430 156 486 174" fill="none"/>
+<path d="M370 98 C369 88 372 80 380 74" fill="none"/>
+<path d="M204 308 C194 314 186 318 178 322" fill="none"/>
+<path d="M488 278 C496 274 504 270 510 266" fill="none"/>
+</g>
+<g stroke="#111111" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="#ffffff">
+<path d="M495 284 C493 289 501 292 504 289 L563 188 L549 180 Z"/>
+<path d="M548 180 L564 188 L576 166 L560 158 Z"/>
+<path d="M554 169 L570 177" fill="none"/>
+<path d="M576 166 C588 160 596 150 596 138 C598 126 600 118 594 112 C586 110 576 118 568 128 C560 138 556 148 560 158 Z"/>
+<path d="M595 136 C598 124 600 117 594 112 C586 110 578 118 572 128 C580 132 588 134 595 136 Z" fill="#111111"/>
+</g>
+<path d="M568 156 L578 138 M576 160 L586 142" fill="none" stroke="#111111" stroke-width="5" stroke-linecap="round"/>
+<g transform="translate(-28 6)">
+<path d="M118 296 C150 278 206 286 206 314 C206 330 190 334 196 350 C200 368 152 382 120 366 C94 352 94 314 118 296 Z" fill="#f4dcae" stroke="#111111" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="180" cy="318" r="9" fill="#ffffff" stroke="#111111" stroke-width="17"/>
+<circle cx="128" cy="322" r="10" fill="#e2574c"/>
+<circle cx="150" cy="302" r="9" fill="#f2b632"/>
+<circle cx="140" cy="350" r="10" fill="#2a7299"/>
+<circle cx="170" cy="354" r="8" fill="#4bb07a"/>
+</g>
+</svg>

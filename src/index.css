@@ -1,11 +1,14 @@
 :root {
-  --accent: #1d5fa8;
-  --accent-soft: #e8f1fb;
-  --surface: #ffffff;
-  --bg: #f5f8fb;
-  --border: #dde4ec;
-  --text: #1a222c;
-  --text-muted: #5b6b7c;
+  --accent: #2a7299;
+  --accent-soft: #e2f1f8;
+  --surface: #fbfdfe;
+  --bg: #eef5f9;
+  --border: #cde0ea;
+  --text: #12303d;
+  --text-muted: #4c6878;
+  --shadow: 18, 48, 61;
+  --font-body: 'Raleway', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
 *,
@@ -16,9 +19,16 @@
 
 body {
   margin: 0;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
 }
 
 img {
