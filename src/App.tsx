@@ -55,7 +55,7 @@ function App() {
             src={`${import.meta.env.BASE_URL}logo.svg`}
             alt=""
           />
-          <h1 className={styles.title}>the view</h1>
+          <h1 className={styles.title}>impression</h1>
         </Link>
 
         {/* Navigation */}

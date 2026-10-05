@@ -1,19 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="170 46 392 392">
-<rect x="170" y="46" width="392" height="392" rx="80" fill="#ffffff"/>
-<path d="M291 344 L289 374 M378 342 L380 372" fill="none" stroke="#111111" stroke-width="17" stroke-linecap="round"/>
-<g fill="#ffffff" stroke="#111111" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 24)">
+<defs>
+<mask id="cover" maskUnits="userSpaceOnUse" x="0" y="0" width="700" height="500">
+<rect x="0" y="0" width="700" height="500" fill="white"/>
+<g fill="black" stroke="black" stroke-width="17">
+<path d="M248 172 C236 140 290 104 370 98 C450 92 528 116 530 150 C532 172 512 186 492 184 C440 166 330 160 248 172 Z"/>
+<g transform="translate(0 24)"><path d="M268 364 C266 352 290 348 308 352 C324 356 326 370 312 376 C296 382 270 378 268 364 Z"/><path d="M352 360 C356 348 382 346 398 352 C412 358 410 372 394 376 C376 380 350 374 352 360 Z"/></g>
+</g>
+</mask>
+</defs>
+<path d="M291 344 L289 374 M378 342 L380 372" fill="none" stroke="#111111" stroke-width="17" stroke-linecap="round" mask="url(#cover)"/>
+<g fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round" stroke-width="17" transform="translate(0 24)">
 <path d="M268 364 C266 352 290 348 308 352 C324 356 326 370 312 376 C296 382 270 378 268 364 Z"/>
 <path d="M352 360 C356 348 382 346 398 352 C412 358 410 372 394 376 C376 380 350 374 352 360 Z"/>
 </g>
-<g fill="none" stroke="#111111" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+<g fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round" stroke-width="22" mask="url(#cover)">
 <path d="M232 186 C262 150 350 142 420 160 C474 174 500 214 490 262 C478 318 404 344 320 342 C262 341 218 330 206 300 C194 268 204 214 232 186 Z"/>
 <circle cx="296" cy="236" r="3"/>
 <circle cx="400" cy="226" r="3"/>
 <path d="M268 276 C308 306 382 300 424 262"/>
 </g>
-<g stroke="#111111" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
-<path d="M248 172 C236 140 290 104 370 98 C450 92 528 116 530 150 C532 172 512 186 492 184 C440 166 330 160 248 172 Z" fill="#ffffff"/>
-<path d="M264 164 C340 152 430 156 486 174" fill="none"/>
-<path d="M370 98 C369 88 372 80 380 74" fill="none"/>
+<g fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round" stroke-width="17">
+<path d="M248 172 C236 140 290 104 370 98 C450 92 528 116 530 150 C532 172 512 186 492 184 C440 166 330 160 248 172 Z"/>
+<path d="M264 164 C340 152 430 156 486 174"/>
+<path d="M370 98 C369 88 372 80 380 74"/>
 </g>
 </svg>
