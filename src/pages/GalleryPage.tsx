@@ -1,8 +1,8 @@
-import type { Artwork } from "./types";
+import type { Artwork } from "../api/types";
 import { Link, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import styles from "./GalleryPage.module.css";
-import { getImageUrl } from "./image";
+import { getImageUrl } from "../api/image";
 
 type Props = {
   artworks: Artwork[];

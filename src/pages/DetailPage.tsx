@@ -1,6 +1,6 @@
-import type { Artwork } from './types'
+import type { Artwork } from '../api/types'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
-import { getImageUrl } from './image'
+import { getImageUrl } from '../api/image'
 import styles from './DetailPage.module.css'
 
 type Props = {

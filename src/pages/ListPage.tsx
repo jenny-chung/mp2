@@ -1,8 +1,9 @@
-import type { Artwork } from "./types";
+import type { Artwork } from "../api/types";
 import { Link, useSearchParams } from "react-router-dom";
 import { useMemo } from "react";
 import styles from "./ListPage.module.css";
-import { getImageUrl } from "./image";
+import { getImageUrl } from "../api/image";
+import { updateSearchParams } from "../utils/searchParams";
 
 type Props = {
   artworks: Artwork[];
@@ -11,23 +12,26 @@ type Props = {
 type SortField = 'title' | 'artist' | 'date'
 type SortOrder = 'asc' | 'desc'
 
+const SORT_FIELDS: SortField[] = ['title', 'artist', 'date']
+const SORT_ORDERS: SortOrder[] = ['asc', 'desc']
+
 const ListPage = ({ artworks }: Props) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
   const search = searchParams.get('q') ?? ''
-  const sortBy = (searchParams.get('sort') as SortField | null) ?? 'title'
-  const sortOrder = (searchParams.get('order') as SortOrder | null) ?? 'asc'
+  const sortByParam = searchParams.get('sort')
+  const sortOrderParam = searchParams.get('order')
+  const sortBy = SORT_FIELDS.find((field) => field === sortByParam) ?? 'title'
+  const sortOrder = SORT_ORDERS.find((order) => order === sortOrderParam) ?? 'asc'
 
   function updateParams(updates: Record<string, string>) {
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev)
+    updateSearchParams(setSearchParams, (next) => {
       for (const [key, value] of Object.entries(updates)) {
         if (value) next.set(key, value)
         else next.delete(key)
       }
-      return next
-    }, { replace: true })
+    })
   }
 
   const query = search.toLowerCase()
@@ -76,7 +80,7 @@ const ListPage = ({ artworks }: Props) => {
             </div>
 
             <label className={styles.sortLabel}>
-                Sort by
+                Sort by: 
                 <select
                     className={styles.sortSelect}
                     value={sortBy}

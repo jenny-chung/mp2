@@ -1,12 +1,12 @@
-import ListPage from './ListPage'
-import GalleryPage from './GalleryPage'
-import DetailPage from './DetailPage'
+import ListPage from './pages/ListPage'
+import GalleryPage from './pages/GalleryPage'
+import DetailPage from './pages/DetailPage'
 import { NavLink, Link, Navigate, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { fetchArtworks } from './artworks'
-import type { Artwork } from './types'
+import { fetchArtworks } from './api/artworks'
+import type { Artwork } from './api/types'
 import styles from './App.module.css'
-import { ListIcon, GalleryIcon } from './icons'
+import { ListIcon, GalleryIcon } from './components/icons'
 
 function App() {
 
