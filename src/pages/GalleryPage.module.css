@@ -51,26 +51,6 @@
   background: var(--accent);
 }
 
-.clearButton {
-  padding: 0.4rem 0.9rem;
-  border: none;
-  background: none;
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  text-decoration: underline;
-  cursor: pointer;
-  transition: color 0.15s ease;
-}
-
-.clearButton:hover {
-  color: var(--accent);
-}
-
-.clearButton:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
 .grid {
   list-style: none;
   margin: 0;

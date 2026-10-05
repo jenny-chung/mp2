@@ -43,7 +43,7 @@ const GalleryPage = ({ artworks }: Props) => {
     }, { replace: true });
   }
 
-  function clearTypes() {
+  function showAllTypes() {
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev);
       next.delete('type');
@@ -54,7 +54,14 @@ const GalleryPage = ({ artworks }: Props) => {
   return (
     <div className={styles.page}>
       <div className={styles.filters} role="group" aria-label="Filter by artwork type">
-        <span className={styles.filtersLabel}>Filter by type</span>
+        <span className={styles.filtersLabel}>Filter by: </span>
+        <button
+          className={styles.filterButton}
+          aria-pressed={selectedTypes.length === 0}
+          onClick={showAllTypes}
+        >
+          All types
+        </button>
         {types.map((type) => (
           <button
             key={type}
@@ -65,12 +72,6 @@ const GalleryPage = ({ artworks }: Props) => {
             {type}
           </button>
         ))}
-
-        {selectedTypes.length > 0 && (
-          <button className={styles.clearButton} onClick={clearTypes}>
-            Clear
-          </button>
-        )}
       </div>
 
       <ul className={styles.grid}>
@@ -85,7 +86,6 @@ const GalleryPage = ({ artworks }: Props) => {
                 className={styles.image}
                 src={getImageUrl(artwork.imageId, 400)}
                 alt={artwork.title}
-                loading="lazy"
                 referrerPolicy="no-referrer"
               />
               <span className={styles.caption}>{artwork.title}</span>
