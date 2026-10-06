@@ -100,6 +100,12 @@ const ListPage = ({ artworks }: Props) => {
             </button>
         </div>
 
+        {search && sortedArtworks.length > 0 && (
+            <p className={styles.resultCount} role="status">
+                {sortedArtworks.length} {sortedArtworks.length === 1 ? 'artwork' : 'artworks'} found
+            </p>
+        )}
+
         {sortedArtworks.length === 0 ? (
             <p className={styles.empty}>No artworks match your search.</p>
         ) : (
